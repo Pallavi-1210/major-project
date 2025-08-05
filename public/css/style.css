@@ -1,0 +1,108 @@
+
+/*  footer to be bottom  */
+.body {
+    display:flex;
+    flex-direction: column;
+    height: 100vh; 
+    /* 100 vh means 100% height from top to bootom */
+}
+.container {
+    flex:1;
+    /* jitna footer ke content ko jga chte utna lai lega so , woh bottm m stick rhega */
+}
+
+/* navbar */
+.navbar {
+    height: 5rem;
+    background:white;
+}
+
+.fa-compass {
+    color: #fe424d;
+    font-size: 2rem;
+}
+
+.nav-link {
+    color: #222222 !important;
+}
+
+.f-info-links a {
+text-decoration: none;
+color: #222222;
+}
+
+.f-info-links a:hover {
+text-decoration: underline;
+}
+.f-info{
+    height:8rem;
+    background: #ebebeb;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+    text-align: center;
+}
+
+.f-info-socials i {
+    margin-right: 1rem;
+     font-size: 1.2rem;
+}
+
+/* al three parts of navbar come in different line */
+.f-info-links,
+  .f-info-socials,
+.f-info-brand { 
+  width: 100%;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+}
+ /* cards */
+.card {
+    border:none !important;
+    margin-bottom: 2rem;
+}
+.card-img-top {
+    width:100% !important;
+    border-radius: 0.5rem !important;
+    object-fit: cover !important;
+}
+.listing-link {
+    text-decoration: none;
+}
+/*  */
+.card-img-overlay{
+    opacity: 0;
+}
+
+.card-img-overlay:hover {
+    opacity: 0.2;
+    background: white;
+}
+ /* new page */
+.add-btn{
+    background: #fe424d !important;
+    border: none !important;
+}
+
+/* editpage */
+.edit-btn{
+     background: #fe424d !important;
+    border: none !important;
+}
+
+/* show  */
+.show-img {
+    height:30vh;
+}
+
+.btns{
+    display: flex;
+}
+
+.dlt-btn{
+        background: #fe424d !important;
+    border: none !important;
+
+}

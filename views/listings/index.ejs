@@ -1,0 +1,195 @@
+<% layout("layouts/biolerplate") %>
+<style>
+  #filters {
+    display:flex;
+    flex-wrap:wrap;
+    align-items : center;
+  }
+  .filter
+   {
+    margin-right: 1rem;
+    margin-top: 1.5rem;
+    text-align: center;
+    opacity:0.7;
+  }
+  .filter:hover {
+  opacity:1;
+  cursor:pointer;
+  }
+.tax-info {
+  display:none
+}
+.tax-toogle {
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 1rem;
+    height:3.2rem;
+    /* margin-top:1.5rem; set parent div ie filters to align-item:center */
+    margin-left : 2rem;
+    display:flex;
+    align-items : center;
+  }
+.filter a {
+  text-decoration: none;
+  color:black
+}
+</style>
+
+<!-- 👇 Add this just before your <div id="filters"> -->
+<button class="btn btn-outline-secondary d-md-none my-2 ms-2" 
+        type="button" 
+        data-bs-toggle="collapse" 
+        data-bs-target="#filterCollapse"
+        aria-expanded="false" 
+        aria-controls="filterCollapse">
+  Show Filters
+</button>
+
+    <!-- <h2>ALL LISTINGS</h2> -->
+<div class="collapse d-md-block" id="filterCollapse"> 
+ <div id="filters">
+  <div class="filter">
+    <a href="/listings/category?category=Trending">
+      <i class="fa-solid fa-fire"></i>
+      <p>Trending</p>
+    </a>
+  </div>
+
+  <div class="filter">
+    <a href="/listings/category?category=Rooms">
+      <i class="fa-solid fa-bed"></i>
+      <p>Rooms</p>
+    </a>
+  </div>
+
+  <div class="filter">
+    <a href="/listings/category?category=Iconic Cities">
+      <i class="fa-solid fa-building"></i>
+      <p>Iconic Cities</p>
+    </a>
+  </div>
+
+  <div class="filter">
+    <a href="/listings/category?category=Mountains">
+      <i class="fa-solid fa-mountain"></i>
+      <p>Mountains</p>
+    </a>
+  </div>
+
+  <div class="filter">
+    <a href="/listings/category?category=Castles">
+      <i class="fa-brands fa-fort-awesome"></i>
+      <p>Castles</p>
+    </a>
+  </div>
+
+  <div class="filter">
+    <a href="/listings/category?category=Amazing Pools">
+      <i class="fa-solid fa-person-swimming"></i>
+      <p>Amazing Pools</p>
+    </a>
+  </div>
+
+  <div class="filter">
+    <a href="/listings/category?category=Camping">
+      <i class="fa-solid fa-campground"></i>
+      <p>Camping</p>
+    </a>
+  </div>
+
+  <div class="filter">
+    <a href="/listings/category?category=Farms">
+      <i class="fa-solid fa-cow"></i>
+      <p>Farms</p>
+    </a>
+  </div>
+
+  <div class="filter">
+    <a href="/listings/category?category=Arctic">
+      <i class="fa-solid fa-snowflake"></i>
+      <p>Arctic</p>
+    </a>
+  </div>
+  <div class="filter">
+  <a href="/listings/category?category=Top%20of%20the%20World">
+    <i class="fa-solid fa-mountain-sun"></i>
+    <p>Top of the World</p>
+  </a>
+</div>
+
+<div class="filter">
+  <a href="/listings/category?category=Domes">
+    <i class="fa-solid fa-circle"></i>
+    <p>Domes</p>
+  </a>
+</div>
+
+<div class="filter">
+  <a href="/listings/category?category=Bed">
+    <i class="fa-solid fa-bed"></i>
+    <p>Bed</p>
+  </a>
+</div>
+<!-- 
+<div class="filter">
+  <a href="/listings/category?category=Breakfast">
+    <i class="fa-solid fa-utensils"></i>
+    <p>Breakfast</p>
+  </a>
+</div>
+
+<div class="filter">
+  <a href="/listings/category?category=Cave">
+    <i class="fa-solid fa-mountain"></i>
+    <p>Cave</p>
+  </a>
+</div> --> 
+
+  <div class="tax-toogle" >
+  <div class="form-check form-switch form-check-reverse">
+   <input class="form-check-input" type="checkbox" role="switch"
+    id="switchCheckDefault">
+   <label class="form-check-label" for="switchCheckDefault">
+    Display total after taxes</label>
+    </div>
+   </div>
+    </div>
+    </div>
+
+
+<!-- show all listings -->
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3 mb-5">   
+  <% for (let i of allListings) { %>
+  <a href="/listings/<%= i._id %>" class="listing-link">
+  <div class="card col listing-card mt-3 mb-3 rounded">
+    <img src="<%= i.image.url %>" 
+       class="card-img-top" 
+       alt="listing-image" 
+       style="height: 20rem"/>
+    <div class="card-body"> 
+      <p class="card-text">
+      <b><%= i.title %></b>  <br>
+      &#8377; <%= i.price.toLocaleString("en-IN") %>
+      <i class="tax-info">&nbsp &nbsp +18%GST</i>
+        </p>
+      </div>
+    </div>
+  </a>
+  <% } %>
+</div>
+
+<script>
+  let toggler = document.getElementById("switchCheckDefault");
+  toggler.addEventListener("click", ()=> {
+   let taxInfo = document.getElementsByClassName("tax-info");
+   // for loop becz sbb listing ke lie gst print hora h above soo...
+   for(info of taxInfo){
+    if(info.style.display != "inline"){
+    info.style.display = "inline";
+    }
+    else {
+    info.style.display = "none";
+   }
+   }
+  });
+</script>

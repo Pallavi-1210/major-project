@@ -1,0 +1,30 @@
+<% layout("layouts/biolerplate") %>
+<div class="row mt-2 ">
+  <div class="col-8 offset-2">
+    <h2>SIGNUP FOR WANDERLUST</h2>
+     <form action="/signup"  method="POST"   novalidate class="needs-validation">
+      <div class="mb-3">
+       <label for="title" class="form-label">Username:</label>
+       <input type="text" name="username" class="form-control" id="username" required>
+      <div class="invalid-feedback">
+      enter username
+       </div>
+      </div>
+          <div class="mb-3">
+       <label for="email" class="form-label">Email:</label>
+       <input type="text" name="email" class="form-control" id="email" required>
+      <div class="invalid-feedback">
+      enter email
+       </div>
+      </div>
+          <div class="mb-3">
+       <label for="password" class="form-label">Password:</label>
+       <input type="password" name="password" class="form-control" id="password" required>
+      <div class="invalid-feedback">
+      enter password
+       </div>
+      </div>
+     <button class="btn btn-success mt-3 mb-3 " >SIGN UP</button>
+    </form> 
+  </div>
+ </div>

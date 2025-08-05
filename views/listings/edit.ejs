@@ -1,0 +1,72 @@
+<% layout("layouts/biolerplate") %>
+<body>
+<div class="row mt-3" >
+ <div class="col-8 offset-2">
+  <h2>What do you want to edit</h2>
+  <form method="POST"
+   action="/listings/<%= editListing._id %>?_method=PUT" 
+   novalidate class="needs-validation" enctype="multipart/form-data">
+   <div class="mb-3"> 
+    
+     <label for="title"class="form-label">TITLE:</label>
+     <input type="text" name="listing[title]"
+      value="<%= editListing.title %>"class="form-control" required>
+      <div class="valid-feedback">
+      Looks good!
+    </div>
+       </div>
+   <div class="mb-3"> 
+    <img src="<%= originalImageUrl %>">
+   </div>
+
+   <div class="mb-3"> 
+    <label for="image"class="form-label"> NEW IMAGE:</label>
+    <input type="file" name="listing[image]" 
+    value=" <%= editListing.image %>"class="form-control"  >
+   </div>
+
+  <div class="mb-3"> 
+    <label for="description"class="form-label">DESCRIPTION:</label>
+    <input type="text" name="listing[description]"
+     value="<%= editListing.description %>"class="form-control" required>
+     <div class="invalid-feedback">
+    enter short description
+    </div>
+       </div>
+
+
+    <div class="row" > 
+   <div class="mb-3 col-md-4" > 
+    <label for="price"class="form-label">PRICE:</label>
+    <input type="number" name="listing[price]"
+     value="<%= editListing.price %>"class="form-control" required>
+     <div class="invalid-feedback">
+   price should be valid
+    </div>
+   </div>
+
+   <div class="mb-3  col-md-8"> 
+    <label for="country"class="form-label">COUNTRY:</label>
+    <input type="text" name="listing[country]" 
+    value="<%= editListing.country %>"class="form-control" required>
+    <div class="invalid-feedback">
+   the country name should be valid
+    </div>
+  </div> 
+</div>  
+
+   <div class="mb-3"> 
+    <label for="loacation"class="form-label">LOCATION:</label>
+    <input type="text" name="listing[location]" 
+    value="<%=editListing.location %>"class="form-control" required>
+     <div class="invalid-feedback">
+   the country name should be valid
+    </div>
+   </div>
+
+
+ <button class=" btn btn-dark mt-3 edit-btn">Edit</button>
+    </form>
+</div>
+</div>
+</body>

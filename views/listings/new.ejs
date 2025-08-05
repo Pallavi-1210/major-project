@@ -1,0 +1,80 @@
+ <% layout("layouts/biolerplate") %>
+
+<div class="row mt-2 ">
+  <div class="col-8 offset-2">
+        <h2>ADD NEW LISTING</h2>
+          <br><br>
+    <form method="POST" action="/listings"  
+    novalidate class="needs-validation" enctype="multipart/form-data">
+    <div class="mb-3"> 
+     <label for="title" class="form-label">TITLE:</label>
+     <input type="text" name="listing[title]" class="form-control" required>
+     <div class="valid-feedback">
+      Looks good!
+    </div>
+    </div>
+ 
+    <div class="mb-3">
+  <label for="description" class="form-label">DESCRIPTION:</label>
+  <input type="text" name="listing[description]" class="form-control" required>
+  <div class="invalid-feedback">
+    enter short description
+    </div>
+    </div>
+
+     <div class="mb-3"> 
+     <label for="image" class="form-label" >Image:</label>
+     <input type="file" name="listing[image]" class="form-control" >
+    </div>
+
+<div class="row">
+ <div class="mb-3 col-md-4">
+  <label for="price" class="form-label" >PRICE:</label>
+  <input  name="listing[price]" class="form-control" required>
+  <div class="invalid-feedback">
+   price should be valid
+    </div>
+</div>
+
+ <div class="mb-3">
+  <label for="category">Choose category:</label>
+  <br>
+ <select name="listing[category]">
+  <option value="Trending">Trending</option>
+  <option value="Rooms">Rooms</option>
+  <option value="Iconic Cities">Iconic Cities</option>
+  <option value="Mountains">Mountains</option>
+  <option value="Castels">Castels</option>
+  <option value="Amazing Pools">Amazing Pools</option>
+  <option value="Camping">Camping</option>
+  <option value="Farms">Farms</option>
+  <option value="Arcatic">Arcatic</option>
+</select>
+    <div class="invalid-feedback">
+    choose valid category
+    </div>
+    </div>
+
+
+<div class="mb-3 col-md-8">
+      <label for="country" class="form-label">COUNTRY:</label>
+  <input type="text" name="listing[country]" class="form-control"required>
+    <div class="invalid-feedback">
+   country name should be valid
+    </div>
+</div>
+</div>
+
+<div class="mb-3">
+  <label for="loacation" class="form-label">LOCATION:</label>
+  <input type="text" name="listing[location]" class="form-control" required>
+    <div class="invalid-feedback">
+   location should be valid
+    </div>
+</div>
+
+ <button class="btn btn-dark add-btn mt-3 mb-3 " >ADD</button>
+    </form>
+    
+  </div>
+</div>

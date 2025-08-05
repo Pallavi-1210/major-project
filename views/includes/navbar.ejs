@@ -1,0 +1,91 @@
+ <style>
+  .search-btn {
+    background-color: #fe424d;
+    color:#ffff;
+    border-radius: 25px;
+    padding: 0 1rem 0 1rem;
+  }
+  .search-btn:hover {
+    background-color: #fe424d;
+    color:#ffff;
+  }
+  .search-btn i{
+    display:inline;
+    margin-right: 0.5rem;
+  }
+  .search-input {
+    border-radius: 25px;
+    padding : 0.5rem 3rem 0.5rem 3rem;
+  }
+ </style>
+ <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+  <!-- navbar: Bootstrap navbar class
+       navbar-expand-md: navbar will expand from md (≥768px) and collapse below that
+       bg-body-light: light background
+       border-bottom sticky-top: border and sticky navbar on scroll -->
+  
+  <div class="container-fluid">
+    <!-- Full-width responsive container -->
+
+    <a class="navbar-brand" href="/listings">
+      <i class="fa-solid fa-compass"></i>
+    </a>
+    <!-- Brand icon/logo at the left side -->
+
+    <!-- Toggle button (hamburger) for small screens -->
+    <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- When screen is small (below md), this button shows.
+         On click, it toggles (show/hide) the menu below. -->
+
+    <!-- Collapsible part of navbar -->
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <!-- This part is hidden on small screens, shown on toggle click -->
+
+      <!-- Left-side nav item(s) -->
+      <div class="navbar-nav">
+        <!-- navbar-nav: bootstrap class to style the group of nav links -->
+        <a class="nav-link" href="/listings">Explore</a>
+      </div>
+
+   <div class="navbar-nav ms-auto">
+    <form action="/listings/search" 
+    method="GET" 
+    class="d-flex" 
+    role="search">
+  <input class="form-control me-2 search-input" 
+    type="search" 
+    placeholder="Search destinations" 
+    aria-label="Search" 
+    name="country" />
+  <button class="btn search-btn" 
+    type="submit">
+    <i class="fa-solid fa-magnifying-glass"></i>Search
+  </button>
+   </form>
+    </div>
+      <!-- Right-side nav items (auto margin start pushes this to right) -->
+       <!-- MS AUTO : MARGIN FROM START -->
+      <div class="navbar-nav ms-auto"> 
+        <a class="nav-link" href="/listings/new">Airbnb your home</a>
+
+        <% if(!currUser){ %>
+          <!-- If user is not logged in -->
+          <a class="nav-link" href="/signup"><b>Signup</b></a>
+          <a class="nav-link" href="/login"><b>Login</b></a>
+        <% } %>
+
+        <% if(currUser){ %>
+          <!-- If user is logged in -->
+          <a class="nav-link" href="/logout">Logout</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>
