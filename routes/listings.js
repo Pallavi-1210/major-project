@@ -9,14 +9,13 @@ const upload = multer({ storage });
 
 
  //index  & create(save)
-router
- .route("/")
- .get(wrapAsync(listingController.index))
- .post( 
-  validateListing, // phle req aaye frr validate huee then baki code chlega
-  upload.single('listing[image]'),
-  wrapAsync(listingController.createListing));
-
+router.route("/")
+  .get(isListingFound, wrapAsync(listingController.indexListing))
+  .post(
+    isLoggedIn,
+    validateListing,
+    upload.single('listing[image]'),
+    wrapAsync(listingController.createListing));
 // create(form) ********
 router.get(
   "/new" , 
