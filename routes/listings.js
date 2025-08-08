@@ -10,7 +10,7 @@ const upload = multer({ storage });
 
  //index  & create(save)
 router.route("/")
-  .get(isListingFound, wrapAsync(listingController.indexListing))
+  .get( wrapAsync(listingController.indexListing))
   .post(
     isLoggedIn,
     validateListing,
