@@ -59,18 +59,16 @@ store.on("error" , ()=> {
 })
 
 const sessionOptions = {
-    store,
-    secret:process.env.SECRET,
-    resave:false,
-    saveUninitialized:true,
-    cookie:{
-    expires:Date.now()+24*60*60*1000,
-    maxAge:24*60*60*1000, // 1 day   
-    secure: process.env.NODE_ENV === "production", // ✅ Only true in production (like Render)
+  store,
+  secret: process.env.SECRET || "thisisnotagoodsecret",
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
     httpOnly: true,
-    }
+    secure: process.env.NODE_ENV === "production", // true on Render
+    maxAge: 1000 * 60 * 60 * 24 // 1 day
+  }
 };
-
 
 // app.get("/" ,(req,res) => { 
 //    res.send("Welcome to Wanderlust");
