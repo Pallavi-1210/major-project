@@ -2,6 +2,8 @@
     require('dotenv').config();
 }
 const express = require("express");
+app.set('trust proxy', 1); // ✅ Important fix for Render HTTPS redirect issues
+
 const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
@@ -62,9 +64,10 @@ const sessionOptions = {
     resave:false,
     saveUninitialized:true,
     cookie:{
-        expires:Date.now()+24*60*60*1000,
-        maxAge:24*60*60*1000, // 1 day   
-        http:true, // secure cookies only sent over HTTPS
+    expires:Date.now()+24*60*60*1000,
+    maxAge:24*60*60*1000, // 1 day   
+    secure: process.env.NODE_ENV === "production", // ✅ Only true in production (like Render)
+    httpOnly: true,
     }
 };
 
