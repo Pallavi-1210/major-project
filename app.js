@@ -54,7 +54,7 @@ const store = MongoStore.create( {
   touchAfter : 24*3600
 });
 
-store.on("error" , ()=> {
+store.on("error" , (err)=> {
     console.log("error in mongoDb store" ,err);
 })
 
@@ -82,11 +82,11 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.use((req,res,next)=> {
-    res.locals.sucess = req.flash("sucess");
+app.use((req, res, next) => {
+    res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
     res.locals.currUser = req.user;
-       next();
+    next();
 });
 
 
