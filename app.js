@@ -82,10 +82,12 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+// middleware to make currUser available in all EJS templates
+// middleware to make currUser and flash messages available in all EJS templates
 app.use((req, res, next) => {
-    res.locals.success = req.flash("success");
-    res.locals.error = req.flash("error");
-    res.locals.currUser = req.user;
+    res.locals.currUser = req.user || null; // if no user, set null
+    res.locals.success = req.flash("success") || []; // always an array
+    res.locals.error = req.flash("error") || [];     // always an array
     next();
 });
 

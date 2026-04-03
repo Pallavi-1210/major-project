@@ -13,7 +13,7 @@ const ExpressError = require("../utils/ExpressError.js");
 
   listing_find.reviews.push(newRev);
   await listing_find.save();
-  req.flash("sucess" , "New review created successfully!");
+  req.flash("success" , "New review created successfully!");
   res.redirect(`/listings/${id}`);
 };
 
@@ -23,6 +23,6 @@ module.exports.deleteReview = async (req,res) => {
   await listing.findByIdAndUpdate(id ,{$pull : {reviews: reviewId}});
  //listing ke nadr jo review wlaa part h umy us review ko pull/dlt krro  jikse value reviewId ke tra h
   await review.findByIdAndDelete(reviewId);
-  req.flash("sucess" , " review deleted successfully!");
+  req.flash("success" , " review deleted successfully!");
   res.redirect(`/listings/${id}`);
 }

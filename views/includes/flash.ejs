@@ -2,21 +2,24 @@
  sucess ek array so print alert when
 if koi add hue h listing ie sucess ke length zero se bdee h , -->
 
- <% if(sucess && sucess.length > 0 ){ %>
-<div class="alert alert-info alert-dismissible fade show col-6 offset-3" role="alert">
-  <%= sucess %>
+<!-- views/includes/flash.ejs -->
+<% let success = locals.success || []; %>
+<% let error = locals.error || []; %>
 
-  <button type="button" 
-  class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
- <% } %>
-  
+<% if (success.length > 0) { %>
+  <% success.forEach(msg => { %>
+    <div class="alert alert-info alert-dismissible fade show col-6 offset-3" role="alert">
+      <%= msg %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+  <% }) %>
+<% } %>
 
- <% if(error && error.length > 0 ){ %>
-<div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
-<%= error %>
-  <button type="button" 
-  class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
- <% } %>
-  
+<% if (error.length > 0) { %>
+  <% error.forEach(msg => { %>
+    <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
+      <%= msg %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+  <% }) %>
+<% } %>

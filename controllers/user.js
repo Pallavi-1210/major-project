@@ -13,7 +13,7 @@ module.exports.rendersignUpForm = (req,res) => {
     if(err){
     return next(err);}
     else{
-     req.flash("sucess" , "sucessesfully signed up");
+     req.flash("success" , "sucessesfully signed up");
      res.redirect("/listings");
     }
   });
