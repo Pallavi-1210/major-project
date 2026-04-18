@@ -71,12 +71,14 @@ module.exports.destroyListing = async (req, res) => {
     res.redirect("/listings");
 };
 
-module.exports.filterListing = async ( req , res) => {
-    let {category}  = req.query;
+module.exports.filterListing = async (req, res) => {
+    let { category } = req.query;
+
     let allListings = await listing.find({});
-    let filterListing = allListings.filter(i => i.category == category)
-     res.render("listings/filter", { filterListing });
-}
+    let filterListing = allListings.filter(i => i.category == category);
+
+    res.render("listings/filter", { filterListing });
+};
 
 module.exports.searchListing = async (req, res) => {
     let { country } = req.query;

@@ -347,6 +347,54 @@ const sampleListings = [
     location: "Costa Rica",
     country: "Costa Rica",
   },
+  {
+    title: "Luxury Heritage Haveli",
+    description: "Experience the royal life in this beautifully restored heritage haveli in Rajasthan. Features intricate architecture and a grand courtyard.",
+    image: {
+      filename: "listingimage",
+      url: "https://images.unsplash.com/photo-1599661509657-2e1858348987?q=80&w=2938&auto=format&fit=crop",
+    },
+    price: 5500,
+    location: "Jaipur",
+    country: "India",
+    category: "Iconic Cities"
+  },
+  {
+    title: "Himalayan View Cottage",
+    description: "Wake up to majestic snow-capped peaks in this cozy wooden cottage. Perfect for escaping the city heat and enjoying nature walks.",
+    image: {
+      filename: "listingimage",
+      url: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=2670&auto=format&fit=crop",
+    },
+    price: 2500,
+    location: "Manali",
+    country: "India",
+    category: "Mountains"
+  },
+  {
+    title: "Goan Portuguese Villa",
+    description: "A stunning 19th-century Portuguese villa just minutes away from pristine beaches. Complete with a private pool and tropical garden.",
+    image: {
+      filename: "listingimage",
+      url: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2670&auto=format&fit=crop",
+    },
+    price: 8000,
+    location: "Goa",
+    country: "India",
+    category: "Amazing Pools"
+  },
+  {
+    title: "Cabin in the Smoky Mountains",
+    description: "A beautiful log cabin in the heart of the Great Smoky Mountains. Enjoy the hot tub and stunning autumn leaf views.",
+    image: {
+      filename: "listingimage",
+      url: "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=2670&auto=format&fit=crop",
+    },
+    price: 1500,
+    location: "Gatlinburg",
+    country: "United States",
+    category: "Mountains"
+  }
 ];
 
 module.exports = { data: sampleListings };

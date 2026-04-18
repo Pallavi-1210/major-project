@@ -70,9 +70,9 @@ const sessionOptions = {
   }
 };
 
-// app.get("/" ,(req,res) => { 
-//    res.send("Welcome to Wanderlust");
-// });
+app.get("/" ,(req,res) => { 
+   res.redirect("/listings");
+});
 
 app.use(session(sessionOptions));
 app.use(flash());

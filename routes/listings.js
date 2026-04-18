@@ -16,6 +16,7 @@ router.route("/")
     validateListing,
     upload.single('listing[image]'),
     wrapAsync(listingController.createListing));
+    
 // create(form) ********
 router.get(
   "/new" , 
