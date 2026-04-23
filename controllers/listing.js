@@ -1,5 +1,7 @@
+const axios = require("axios");
 const listing = require("../models/listing.js");
 const ExpressError = require("../utils/ExpressError.js");
+
 
 module.exports.index = async (req, res) => {
     const allListings = await listing.find({});
@@ -13,10 +15,33 @@ module.exports.newRenderform = (req, res) => {
 module.exports.createListing = async (req, res, next) => {
     let url = req.file.path;
     let filename = req.file.filename;
+
+    // ✅ small 'listing' as per your code
     const newListing = new listing(req.body.listing);
+        // Geocoding with Nominatim API (OpenStreetMap)
+    let geometry = null;
+    try {
+        const query = `${newListing.location}, ${newListing.country}`;
+        const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(query)}`, {
+            headers: { "User-Agent": "WanderlustApp/1.0" }
+        });
+        const data = await response.json();
+        if (data && data.length > 0) {
+            let lat = parseFloat(data[0].lat);
+            let lng = parseFloat(data[0].lon);
+            geometry = { type: 'Point', coordinates: [lng, lat] };
+        }
+    } catch (err) {
+        console.error("Geocoding error:", err);
+    }
+    if (geometry) {
+        newListing.geometry = geometry;
+    }
     newListing.owner = req.user._id;
     newListing.image = { url, filename };
+
     await newListing.save();
+
     req.flash("success", "New listing created successfully!");
     res.redirect("/listings");
 };
@@ -33,7 +58,9 @@ module.exports.showListing = async (req, res) => {
         req.flash("error", "Listing not found");
         return res.redirect("/listings");
     }
-    res.render("listings/show", { oneListing });
+    res.render("listings/show", { oneListing ,
+         coordinates: oneListing.geometry?.coordinates
+    });
 };
 
 module.exports.renderEditform = async (req, res, next) => {

@@ -27,6 +27,18 @@ const listingSchema = new schema({
   location: String,
   country: String,
 
+  geometry: {
+    type: {
+      type: String,
+      enum: ['Point'],
+      default: 'Point'
+    },
+    coordinates: {
+      type: [Number]
+    }
+  },
+
+
   reviews: [
     {
       type: schema.Types.ObjectId,

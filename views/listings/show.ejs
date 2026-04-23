@@ -29,6 +29,23 @@
  </div>
  <% } %>
 
+ <div class="col-8 offset-3 mb-3">
+  <h3>Where you'll be</h3>
+
+  <% if(coordinates && coordinates.length===2) { %>
+    <div id="map"></div>
+  <% } else { %>
+    <p>Location not available.</p>
+  <% } %>
+</div>
+
+<script>
+  window.coordinates = <%-JSON.stringify(oneListing.geometry?.coordinates || null) %>;
+  window.listingTitle = <%-JSON.stringify(oneListing.title || "Location") %>;
+</script>
+
+<script src="/js/map.js"></script>
+
 <!-- REVIEWS -->
  <div class="col-8 offset-3" >
   <hr>
