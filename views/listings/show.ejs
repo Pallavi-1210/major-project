@@ -1,164 +1,377 @@
 <% layout("layouts/biolerplate") %>
 
-<body>
-<div class="row">
+<style>
+  /* StayEase Show Page Luxury 2026 Styling */
+  .show-container {
+    padding-top: 1.5rem;
+    padding-bottom: 3rem;
+  }
 
-  <!-- TITLE -->
-  <div class="col-8 offset-3">
-    <h2><%= oneListing.title %></h2>
-  </div>
+  .show-header-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #2F2F2F;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
 
-  <!-- LISTING CARD -->
-  <div class="col-6 offset-3 show-card listing-card mb-5 mt-5">
+  .show-meta-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.25rem;
+    color: #6B7280;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
 
-    <img src="<%= oneListing.image.url %>" 
-      class="card-img-top show-img" 
-      alt="listing_image">
+  .show-meta-info i {
+    color: #5F8D7A;
+  }
 
-    <div class="card-body">
-      <p class="card-text">
-        <i>Owned by: 
-          <%= oneListing.owner ? oneListing.owner.username : "Unknown User" %>
-        </i>
-      </p>
+  .owner-badge {
+    background-color: rgba(95, 141, 122, 0.1);
+    color: #5F8D7A;
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.88rem;
+  }
 
-      <p class="card-text"><%= oneListing.description %></p>
+  .show-hero-img-box {
+    position: relative;
+    width: 100%;
+    max-height: 380px;
+    aspect-ratio: 16 / 9;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(95, 141, 122, 0.08);
+    margin-bottom: 2rem;
+    background-color: #F7F8F4;
+  }
 
-      <p class="card-text">
-        &#8377; <%= oneListing.price.toLocaleString("en-IN") %>
-      </p>
+  .show-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.4s ease;
+  }
 
-      <p class="card-text"><%= oneListing.location %></p>
-      <p class="card-text"><%= oneListing.country %></p>
-    </div>
-  </div>
+  .show-hero-img-box:hover .show-hero-img {
+    transform: scale(1.01);
+  }
 
-  <!-- EDIT / DELETE -->
-  <% if(currUser && oneListing.owner && currUser._id.equals(oneListing.owner._id)) { %>
-  <div class="btns mb-4 mt-4">
-    <a href="/listings/<%= oneListing._id %>/edit" 
-       class="btn btn-dark col-1 offset-3 edit-btn">
-      EDIT
-    </a>
+  .info-card {
+    background: #FFFFFF;
+    border: 1px solid #E6EADF;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(95, 141, 122, 0.04);
+    margin-bottom: 2rem;
+  }
 
-    <form method="POST"
-      action="/listings/<%= oneListing._id %>?_method=DELETE">
-      <button class="btn btn-dark offset-4 dlt-btn">DELETE</button>
-    </form>
-  </div>
-  <% } %>
+  .price-badge {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #2F2F2F;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.35rem;
+  }
 
-  <!-- MAP -->
-  <div class="col-8 offset-3 mb-3">
-    <h3>Where you'll be</h3>
+  .price-badge span {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #6B7280;
+  }
 
-    <% if(oneListing.geometry && oneListing.geometry.coordinates && oneListing.geometry.coordinates.length === 2) { %>
-      <div id="map"></div>
-    <% } else { %>
-      <p>Location not available.</p>
-    <% } %>
-  </div>
+  .info-section-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2F2F2F;
+    margin-bottom: 0.75rem;
+  }
 
-  <!-- MAP SCRIPT -->
-  <script>
-    window.coordinates = <%-JSON.stringify(oneListing.geometry?.coordinates || null) %>;
-    window.listingTitle = <%-JSON.stringify(oneListing.title || "Location") %>;
-  </script>
+  .info-description {
+    color: #4B5563;
+    font-size: 1.02rem;
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
 
-  <script src="/js/map.js"></script>
+  /* Action Buttons */
+  .action-btns-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
 
-  <!-- REVIEWS SECTION -->
-  <div class="col-8 offset-3">
-    <hr>
+  .btn-sage {
+    background-color: #5F8D7A !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    padding: 0.65rem 1.75rem !important;
+    border-radius: 30px !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 3px 10px rgba(95, 141, 122, 0.2) !important;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
 
-    <% if(currUser) { %>
-    <h3>Leave a review</h3>
+  .btn-sage:hover {
+    background-color: #4E7867 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(78, 120, 103, 0.3) !important;
+    color: #FFFFFF !important;
+  }
 
-    <form action="/listings/<%= oneListing._id %>/reviews"
-      method="POST"
-      novalidate
-      class="needs-validation">
+  .btn-danger-soft {
+    background-color: #E05D5D !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    padding: 0.65rem 1.75rem !important;
+    border-radius: 30px !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 3px 10px rgba(224, 93, 93, 0.2) !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
 
-      <!-- STAR RATING -->
-      <div class="mb-3 mt-3">
-        <label class="form-label">Rating:</label>
+  .btn-danger-soft:hover {
+    background-color: #C94A4A !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(201, 74, 74, 0.3) !important;
+    color: #FFFFFF !important;
+  }
 
-        <fieldset class="starability-slot">
+  /* Map Container */
+  .map-card-wrapper {
+    background: #FFFFFF;
+    border: 1px solid #E6EADF;
+    border-radius: 20px;
+    padding: 1.75rem;
+    box-shadow: 0 4px 20px rgba(95, 141, 122, 0.04);
+    margin-bottom: 2.5rem;
+  }
 
-          <input type="radio" id="no-rate"
-            class="input-no-rate"
-            name="review[rating]"
-            value="1"
-            checked />
+  #map {
+    width: 100%;
+    height: 380px;
+    border-radius: 16px;
+  }
 
-          <input type="radio" id="rate1"
-            name="review[rating]" value="1" />
-          <label for="rate1">1 star</label>
+  /* Reviews Section */
+  .reviews-card-wrapper {
+    background: #FFFFFF;
+    border: 1px solid #E6EADF;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(95, 141, 122, 0.04);
+    margin-bottom: 2.5rem;
+  }
 
-          <input type="radio" id="rate2"
-            name="review[rating]" value="2" />
-          <label for="rate2">2 stars</label>
+  .review-card {
+    background: #FCFCF8;
+    border: 1px solid #E6EADF;
+    border-radius: 16px;
+    padding: 1.25rem;
+    height: 100%;
+    transition: all 0.25s ease;
+  }
 
-          <input type="radio" id="rate3"
-            name="review[rating]" value="3" />
-          <label for="rate3">3 stars</label>
+  .review-card:hover {
+    border-color: #5F8D7A;
+    box-shadow: 0 4px 12px rgba(95, 141, 122, 0.08);
+  }
 
-          <input type="radio" id="rate4"
-            name="review[rating]" value="4" />
-          <label for="rate4">4 stars</label>
+  .review-author {
+    font-weight: 700;
+    color: #2F2F2F;
+    font-size: 1rem;
+    margin-bottom: 0.35rem;
+  }
 
-          <input type="radio" id="rate5"
-            name="review[rating]" value="5" />
-          <label for="rate5">5 stars</label>
+  .btn-delete-sm {
+    border-radius: 20px !important;
+    padding: 0.25rem 0.85rem !important;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    border: 1px solid #E05D5D !important;
+    color: #E05D5D !important;
+    background: transparent !important;
+    transition: all 0.2s ease !important;
+  }
 
-        </fieldset>
+  .btn-delete-sm:hover {
+    background-color: #E05D5D !important;
+    color: #FFFFFF !important;
+  }
+
+  @media (max-width: 767.98px) {
+    .show-hero-img-box {
+      max-height: 250px;
+      border-radius: 16px;
+    }
+    .show-header-title {
+      font-size: 1.75rem;
+    }
+    .info-card, .reviews-card-wrapper, .map-card-wrapper {
+      padding: 1.25rem;
+    }
+  }
+</style>
+
+<div class="container show-container">
+  <div class="row justify-content-center">
+    <div class="col-lg-10 col-xl-9">
+
+      <!-- TITLE & META INFO -->
+      <h1 class="show-header-title"><%= oneListing.title %></h1>
+      
+      <div class="show-meta-info">
+        <span class="owner-badge">
+          <i class="fa-solid fa-circle-user me-1"></i> Hosted by <%= oneListing.owner ? oneListing.owner.username : "Unknown Host" %>
+        </span>
+        <span>
+          <i class="fa-solid fa-location-dot"></i> <%= oneListing.location %>, <%= oneListing.country %>
+        </span>
       </div>
 
-      <!-- COMMENT -->
-      <div class="mb-3 mt-3">
-        <label class="form-label">Comment:</label>
-        <textarea class="form-control"
-          name="review[comment]"
-          rows="5"
-          required></textarea>
+      <!-- MAIN IMAGE SECTION -->
+      <div class="show-hero-img-box">
+        <img src="<%= oneListing.image && oneListing.image.url ? oneListing.image.url : (oneListing.image ? oneListing.image : 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80') %>" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80';" class="show-hero-img" alt="<%= oneListing.title %>">
       </div>
 
-      <button class="btn btn-dark add-btn mt-3 mb-3">
-        submit
-      </button>
-    </form>
-    <% } %>
+      <!-- LISTING INFORMATION -->
+      <div class="info-card">
+        <div class="price-badge">
+          &#8377; <%= oneListing.price.toLocaleString("en-IN") %> <span>/ night</span>
+        </div>
 
-    <!-- DISPLAY REVIEWS -->
-    <% if(oneListing.reviews && oneListing.reviews.length > 0) { %>
+        <hr style="border-color: #E6EADF; margin: 1.25rem 0;" />
 
-      <h4><b>All reviews</b></h4>
+        <h3 class="info-section-title">About this stay</h3>
+        <p class="info-description"><%= oneListing.description %></p>
+      </div>
 
-      <% for(let review of oneListing.reviews){ %>
-        <div class="card col-5 ms-3 mb-3">
-          <div class="card-body">
+      <!-- ACTION BUTTONS (EDIT / DELETE) -->
+      <% if(currUser && oneListing.owner && currUser._id.equals(oneListing.owner._id)) { %>
+        <div class="action-btns-container">
+          <a href="/listings/<%= oneListing._id %>/edit" class="btn btn-sage">
+            <i class="fa-solid fa-pen-to-square"></i> Edit Listing
+          </a>
 
-            <h5 class="card-title">
-              @<%= review.author.username %>
-            </h5>
-
-            <p class="starability-result"
-              data-rating="<%= review.rating %>"></p>
-
-            <p class="card-text"><%= review.comment %></p>
-
-          </div>
-
-          <form method="POST"
-            action="/listings/<%= oneListing._id %>/reviews/<%= review._id %>?_method=DELETE">
-            <button class="btn btn-dark btn-sm">delete</button>
+          <form method="POST" action="/listings/<%= oneListing._id %>?_method=DELETE" class="d-inline">
+            <button class="btn btn-danger-soft" type="submit">
+              <i class="fa-solid fa-trash"></i> Delete Listing
+            </button>
           </form>
         </div>
       <% } %>
 
-    <% } %>
+      <!-- MAP SECTION -->
+      <div class="map-card-wrapper">
+        <h3 class="info-section-title mb-3">
+          <i class="fa-solid fa-map-location-dot text-sage me-1"></i> Where you'll be
+        </h3>
 
+        <% if(oneListing.geometry && oneListing.geometry.coordinates && oneListing.geometry.coordinates.length === 2) { %>
+          <div id="map"></div>
+        <% } else { %>
+          <p class="text-muted mb-0">Location coordinates not available.</p>
+        <% } %>
+      </div>
+
+      <!-- MAP SCRIPT -->
+      <script>
+        window.coordinates = <%-JSON.stringify(oneListing.geometry?.coordinates || null) %>;
+        window.listingTitle = <%-JSON.stringify(oneListing.title || "Location") %>;
+      </script>
+      <script src="/js/map.js"></script>
+
+      <!-- REVIEWS SECTION -->
+      <div class="reviews-card-wrapper">
+        <% if(currUser) { %>
+          <h3 class="info-section-title mb-3">Leave a Review</h3>
+
+          <form action="/listings/<%= oneListing._id %>/reviews" method="POST" novalidate class="needs-validation mb-4">
+            
+            <!-- STAR RATING -->
+            <div class="mb-3">
+              <label class="form-label font-weight-bold" style="font-weight: 600;">Rating:</label>
+
+              <fieldset class="starability-slot">
+                <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked />
+                <input type="radio" id="rate1" name="review[rating]" value="1" />
+                <label for="rate1">1 star</label>
+
+                <input type="radio" id="rate2" name="review[rating]" value="2" />
+                <label for="rate2">2 stars</label>
+
+                <input type="radio" id="rate3" name="review[rating]" value="3" />
+                <label for="rate3">3 stars</label>
+
+                <input type="radio" id="rate4" name="review[rating]" value="4" />
+                <label for="rate4">4 stars</label>
+
+                <input type="radio" id="rate5" name="review[rating]" value="5" />
+                <label for="rate5">5 stars</label>
+              </fieldset>
+            </div>
+
+            <!-- COMMENT -->
+            <div class="mb-3">
+              <label class="form-label" style="font-weight: 600;">Comment:</label>
+              <textarea class="form-control" name="review[comment]" rows="4" style="border-radius: 12px; border-color: #E6EADF;" required></textarea>
+            </div>
+
+            <button class="btn btn-sage mt-2">
+              <i class="fa-solid fa-paper-plane me-1"></i> Submit Review
+            </button>
+          </form>
+        <% } %>
+
+        <!-- DISPLAY REVIEWS -->
+        <% if(oneListing.reviews && oneListing.reviews.length > 0) { %>
+          <% if(currUser) { %><hr style="border-color: #E6EADF; margin: 2rem 0;" /><% } %>
+
+          <h3 class="info-section-title mb-3">All Guest Reviews</h3>
+
+          <div class="row g-3">
+            <% for(let review of oneListing.reviews){ %>
+              <div class="col-md-6">
+                <div class="review-card">
+                  <div class="d-flex align-items-center justify-content-between mb-2">
+                    <h5 class="review-author mb-0">
+                      <i class="fa-solid fa-user-circle me-1" style="color: #5F8D7A;"></i> @<%= review.author ? review.author.username : "Guest" %>
+                    </h5>
+                    <% if(currUser && review.author && currUser._id.equals(review.author._id)) { %>
+                      <form method="POST" action="/listings/<%= oneListing._id %>/reviews/<%= review._id %>?_method=DELETE" class="d-inline">
+                        <button class="btn btn-delete-sm">Delete</button>
+                      </form>
+                    <% } %>
+                  </div>
+
+                  <p class="starability-result mb-2" data-rating="<%= review.rating %>"></p>
+                  <p class="card-text mb-0" style="color: #4B5563; font-size: 0.95rem; line-height: 1.5;"><%= review.comment %></p>
+                </div>
+              </div>
+            <% } %>
+          </div>
+        <% } %>
+      </div>
+
+    </div>
   </div>
-
 </div>
-</body>

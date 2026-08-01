@@ -58,13 +58,12 @@ const listingSchema = new schema({
       'Rooms',
       'Iconic Cities',
       'Mountains',
-      'Castels',
+      'Castles',
       'Amazing Pools',
       'Camping',
-      'Farms',
-      'Arcatic'
+      'Farms'
     ],
-  }
+  },
 });
 
 // ✅ DELETE REVIEWS WHEN LISTING DELETED

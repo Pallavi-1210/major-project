@@ -1,72 +1,194 @@
 <% layout("layouts/biolerplate") %>
-<body>
-<div class="row mt-3" >
- <div class="col-8 offset-2">
-  <h2>What do you want to edit</h2>
-  <form method="POST"
-   action="/listings/<%= editListing._id %>?_method=PUT" 
-   novalidate class="needs-validation" enctype="multipart/form-data">
-   <div class="mb-3"> 
-    
-     <label for="title"class="form-label">TITLE:</label>
-     <input type="text" name="listing[title]"
-      value="<%= editListing.title %>"class="form-control" required>
-      <div class="valid-feedback">
-      Looks good!
+
+<style>
+  .form-page-container {
+    padding-top: 2.5rem;
+    padding-bottom: 4rem;
+  }
+
+  .form-card {
+    background: #FFFFFF;
+    border: 1px solid #E6EADF;
+    border-radius: 24px;
+    padding: 2.75rem 2.5rem;
+    box-shadow: 0 8px 30px rgba(95, 141, 122, 0.08);
+  }
+
+  .form-header-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2F2F2F;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.01em;
+  }
+
+  .form-header-subtitle {
+    color: #6B7280;
+    font-size: 0.98rem;
+    margin-bottom: 2rem;
+  }
+
+  .form-section-label {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #5F8D7A;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #E6EADF;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .form-label {
+    font-weight: 600;
+    color: #2F2F2F;
+    font-size: 0.92rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .form-control {
+    border-radius: 12px !important;
+    border: 1px solid #E6EADF !important;
+    padding: 0.65rem 1rem !important;
+    font-size: 0.95rem !important;
+    color: #2F2F2F !important;
+    background-color: #FCFCF8 !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .form-control:focus {
+    border-color: #5F8D7A !important;
+    box-shadow: 0 0 0 4px rgba(95, 141, 122, 0.15) !important;
+    background-color: #FFFFFF !important;
+  }
+
+  .current-image-preview-wrapper {
+    position: relative;
+    width: 100%;
+    max-height: 220px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    border: 1px solid #E6EADF;
+    background-color: #F7F8F4;
+  }
+
+  .current-image-preview {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+
+  .btn-sage-submit {
+    width: 100%;
+    background-color: #5F8D7A !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    padding: 0.8rem 1.5rem !important;
+    border-radius: 30px !important;
+    font-weight: 600 !important;
+    font-size: 1.05rem !important;
+    box-shadow: 0 4px 14px rgba(95, 141, 122, 0.25) !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .btn-sage-submit:hover {
+    background-color: #4E7867 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(78, 120, 103, 0.35) !important;
+    color: #FFFFFF !important;
+  }
+
+  @media (max-width: 767.98px) {
+    .form-card {
+      padding: 1.75rem 1.25rem;
+    }
+  }
+</style>
+
+<div class="container form-page-container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+      <div class="form-card">
+        <div class="text-center mb-4">
+          <h2 class="form-header-title">Edit Listing Details</h2>
+          <p class="form-header-subtitle">Update information, pricing, or media for your property.</p>
+        </div>
+
+        <form method="POST" action="/listings/<%= editListing._id %>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
+          
+          <!-- Property Overview -->
+          <div class="form-section-label">
+            <i class="fa-solid fa-pen-to-square"></i> Basic Details
+          </div>
+
+          <div class="mb-3">
+            <label for="title" class="form-label">Property Title</label>
+            <input type="text" name="listing[title]" value="<%= editListing.title %>" class="form-control" required>
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+
+          <div class="mb-4">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="listing[description]" class="form-control" rows="4" required><%= editListing.description %></textarea>
+            <div class="invalid-feedback">Please enter a short description.</div>
+          </div>
+
+          <!-- Image Preview & Update -->
+          <div class="form-section-label">
+            <i class="fa-solid fa-image"></i> Property Image
+          </div>
+
+          <% if(originalImageUrl) { %>
+            <div class="mb-2">
+              <label class="form-label">Current Image Preview</label>
+              <div class="current-image-preview-wrapper">
+                <img src="<%= originalImageUrl %>" class="current-image-preview" alt="Current Image">
+              </div>
+            </div>
+          <% } %>
+
+          <div class="mb-4">
+            <label for="image" class="form-label">Upload New Image (Optional)</label>
+            <input type="file" name="listing[image]" class="form-control" accept="image/*">
+          </div>
+
+          <!-- Pricing & Location -->
+          <div class="form-section-label">
+            <i class="fa-solid fa-location-dot"></i> Pricing & Location
+          </div>
+
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label for="price" class="form-label">Price per Night (&#8377;)</label>
+              <input type="number" name="listing[price]" value="<%= editListing.price %>" class="form-control" required>
+              <div class="invalid-feedback">Price should be valid.</div>
+            </div>
+
+            <div class="col-md-8 mb-3">
+              <label for="country" class="form-label">Country</label>
+              <input type="text" name="listing[country]" value="<%= editListing.country %>" class="form-control" required>
+              <div class="invalid-feedback">Country name should be valid.</div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label for="location" class="form-label">City / Location</label>
+            <input type="text" name="listing[location]" value="<%= editListing.location %>" class="form-control" required>
+            <div class="invalid-feedback">Location should be valid.</div>
+          </div>
+
+          <button class="btn btn-sage-submit">
+            <i class="fa-solid fa-floppy-disk"></i> Update Listing
+          </button>
+        </form>
+      </div>
     </div>
-       </div>
-   <div class="mb-3"> 
-    <img src="<%= originalImageUrl %>">
-   </div>
-
-   <div class="mb-3"> 
-    <label for="image"class="form-label"> NEW IMAGE:</label>
-    <input type="file" name="listing[image]" 
-    value=" <%= editListing.image %>"class="form-control"  >
-   </div>
-
-  <div class="mb-3"> 
-    <label for="description"class="form-label">DESCRIPTION:</label>
-    <input type="text" name="listing[description]"
-     value="<%= editListing.description %>"class="form-control" required>
-     <div class="invalid-feedback">
-    enter short description
-    </div>
-       </div>
-
-
-    <div class="row" > 
-   <div class="mb-3 col-md-4" > 
-    <label for="price"class="form-label">PRICE:</label>
-    <input type="number" name="listing[price]"
-     value="<%= editListing.price %>"class="form-control" required>
-     <div class="invalid-feedback">
-   price should be valid
-    </div>
-   </div>
-
-   <div class="mb-3  col-md-8"> 
-    <label for="country"class="form-label">COUNTRY:</label>
-    <input type="text" name="listing[country]" 
-    value="<%= editListing.country %>"class="form-control" required>
-    <div class="invalid-feedback">
-   the country name should be valid
-    </div>
-  </div> 
-</div>  
-
-   <div class="mb-3"> 
-    <label for="loacation"class="form-label">LOCATION:</label>
-    <input type="text" name="listing[location]" 
-    value="<%=editListing.location %>"class="form-control" required>
-     <div class="invalid-feedback">
-   the country name should be valid
-    </div>
-   </div>
-
-
- <button class=" btn btn-dark mt-3 edit-btn">Edit</button>
-    </form>
+  </div>
 </div>
-</div>
-</body>

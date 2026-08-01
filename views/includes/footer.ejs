@@ -1,14 +1,226 @@
-<footer>
-    <div class="f-info">
-        <div class="f-info-socials">
-            <i class="fa-brands fa-facebook"></i>
-           <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-linkedin"></i>
-        </div>
-        <div class="f-info-brand"> &copy; Wanderlust private limited</div>
-        <div class="f-info-links">
-            <a href="/privacy">Privacy</a>
-            <a href="/terms">Terms</a>
-        </div>
+<style>
+  /* StayEase Modern 2026 Professional Footer - Cream & Sage Green Theme */
+  .custom-footer {
+    background-color: #FCFCF8;
+    color: #2F2F2F;
+    border-top: 1px solid #E6EADF;
+    padding-top: 4rem;
+    padding-bottom: 2.25rem;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    margin-top: 4rem;
+  }
+
+  .footer-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    text-decoration: none;
+    margin-bottom: 1.1rem;
+  }
+
+  .footer-brand-icon {
+    font-size: 1.25rem;
+    color: #5F8D7A;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(95, 141, 122, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .footer-brand:hover .footer-brand-icon {
+    background: #5F8D7A;
+    color: #FFFFFF;
+    transform: scale(1.05);
+  }
+
+  .footer-brand-title {
+    font-weight: 700;
+    font-size: 1.45rem;
+    color: #5F8D7A;
+    letter-spacing: -0.02em;
+  }
+
+  .footer-tagline {
+    color: #6B7280;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    max-width: 360px;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-heading {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #2F2F2F;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.01em;
+  }
+
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.8rem;
+  }
+
+  .footer-links a {
+    color: #6B7280;
+    text-decoration: none;
+    font-size: 0.94rem;
+    font-weight: 500;
+    transition: all 0.25s ease;
+    display: inline-block;
+  }
+
+  .footer-links a:hover {
+    color: #5F8D7A;
+    transform: translateX(4px);
+  }
+
+  .social-icons-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-top: 0.6rem;
+  }
+
+  .social-icon-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 1px solid #E6EADF;
+    color: #5F8D7A;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.05rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 6px rgba(95, 141, 122, 0.05);
+  }
+
+  .social-icon-btn:hover {
+    background: #5F8D7A;
+    color: #FFFFFF;
+    border-color: #5F8D7A;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(95, 141, 122, 0.2);
+  }
+
+  .footer-divider {
+    border-color: #E6EADF;
+    margin-top: 3.5rem;
+    margin-bottom: 2rem;
+    opacity: 0.75;
+  }
+
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.88rem;
+    color: #6B7280;
+  }
+
+  .footer-bottom-links {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .footer-bottom-links a {
+    color: #6B7280;
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+
+  .footer-bottom-links a:hover {
+    color: #5F8D7A;
+  }
+
+  @media (max-width: 767.98px) {
+    .custom-footer {
+      padding-top: 3rem;
+      margin-top: 3rem;
+    }
+
+    .footer-tagline {
+      max-width: 100%;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .footer-bottom-links {
+      justify-content: center;
+    }
+  }
+</style>
+
+<footer class="custom-footer">
+  <div class="container">
+    <div class="row g-4 justify-content-between">
+
+      <!-- Column 1: Brand -->
+      <div class="col-lg-5 col-md-6 mb-4 mb-lg-0 pe-lg-5">
+        <a href="/listings" class="footer-brand">
+          <div class="footer-brand-icon">
+            <i class="fa-solid fa-house"></i>
+          </div>
+          <span class="footer-brand-title">StayEase</span>
+        </a>
+
+        <p class="footer-tagline">
+          Discover beautiful stays, unique homes, and unforgettable travel experiences.
+        </p>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div class="col-lg-3 col-md-3 col-6 mb-4 mb-lg-0">
+        <h6 class="footer-heading">Quick Links</h6>
+        <ul class="footer-links">
+          <li><a href="/listings">Explore Stays</a></li>
+          <li><a href="/listings">Categories</a></li>
+          <li><a href="/listings/new">Become a Host</a></li>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/signup">Signup</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Popular Categories -->
+      <div class="col-lg-4 col-md-3 col-6 mb-4 mb-lg-0">
+        <h6 class="footer-heading">Popular Categories</h6>
+        <ul class="footer-links">
+          <li><a href="/listings/category?category=Trending">Trending</a></li>
+          <li><a href="/listings/category?category=Rooms">Rooms</a></li>
+          <li><a href="/listings/category?category=Mountains">Mountains</a></li>
+          <li><a href="/listings/category?category=Amazing%20Pools">Amazing Pools</a></li>
+          <li><a href="/listings/category?category=Castles">Castles</a></li>
+        </ul>
+      </div>
+
     </div>
+
+    <hr class="footer-divider" />
+
+    <!-- Bottom Section -->
+    <div class="footer-bottom">
+      <div>
+        &copy; 2026 StayEase. All rights reserved.
+      </div>
+    </div>
+
+  </div>
 </footer>

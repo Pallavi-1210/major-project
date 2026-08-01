@@ -1,30 +1,141 @@
 <% layout("layouts/biolerplate") %>
-<div class="row mt-2 ">
-  <div class="col-8 offset-2">
-    <h2>SIGNUP FOR WANDERLUST</h2>
-     <form action="/signup"  method="POST"   novalidate class="needs-validation">
-      <div class="mb-3">
-       <label for="title" class="form-label">Username:</label>
-       <input type="text" name="username" class="form-control" id="username" required>
-      <div class="invalid-feedback">
-      enter username
-       </div>
-      </div>
+
+<style>
+  .form-page-container {
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+  }
+
+  .form-card {
+    background: #FFFFFF;
+    border: 1px solid #E6EADF;
+    border-radius: 24px;
+    padding: 2.5rem 2.25rem;
+    box-shadow: 0 8px 30px rgba(95, 141, 122, 0.08);
+  }
+
+  .form-header-title {
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: #2F2F2F;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.01em;
+  }
+
+  .form-header-subtitle {
+    color: #6B7280;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+
+  .form-label {
+    font-weight: 600;
+    color: #2F2F2F;
+    font-size: 0.92rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .form-control {
+    border-radius: 12px !important;
+    border: 1px solid #E6EADF !important;
+    padding: 0.65rem 1rem !important;
+    font-size: 0.95rem !important;
+    color: #2F2F2F !important;
+    background-color: #FCFCF8 !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .form-control:focus {
+    border-color: #5F8D7A !important;
+    box-shadow: 0 0 0 4px rgba(95, 141, 122, 0.15) !important;
+    background-color: #FFFFFF !important;
+  }
+
+  .btn-sage-submit {
+    width: 100%;
+    background-color: #5F8D7A !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    padding: 0.75rem 1.5rem !important;
+    border-radius: 30px !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    box-shadow: 0 4px 14px rgba(95, 141, 122, 0.25) !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .btn-sage-submit:hover {
+    background-color: #4E7867 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(78, 120, 103, 0.35) !important;
+    color: #FFFFFF !important;
+  }
+
+  .auth-footer-text {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #6B7280;
+  }
+
+  .auth-footer-text a {
+    color: #5F8D7A;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .auth-footer-text a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div class="container form-page-container">
+  <div class="row justify-content-center">
+    <div class="col-lg-5 col-md-7 col-sm-10">
+      <div class="form-card">
+        <div class="text-center">
+          <h2 class="form-header-title">Create Your StayEase Account</h2>
+          <p class="form-header-subtitle">Join us to explore unique stays and host your home.</p>
+        </div>
+
+        <form action="/signup" method="POST" novalidate class="needs-validation">
           <div class="mb-3">
-       <label for="email" class="form-label">Email:</label>
-       <input type="text" name="email" class="form-control" id="email" required>
-      <div class="invalid-feedback">
-      enter email
-       </div>
-      </div>
+            <label for="username" class="form-label">Username</label>
+            <input type="text" name="username" class="form-control" id="username" placeholder="Choose a username" required>
+            <div class="invalid-feedback">
+              Please enter a username.
+            </div>
+          </div>
+
           <div class="mb-3">
-       <label for="password" class="form-label">Password:</label>
-       <input type="password" name="password" class="form-control" id="password" required>
-      <div class="invalid-feedback">
-      enter password
-       </div>
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email" required>
+            <div class="invalid-feedback">
+              Please enter a valid email address.
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" id="password" placeholder="Create a password" required>
+            <div class="invalid-feedback">
+              Please enter a password.
+            </div>
+          </div>
+
+          <button class="btn btn-sage-submit">
+            <i class="fa-solid fa-user-plus"></i> Sign Up
+          </button>
+        </form>
+
+        <div class="auth-footer-text">
+          Already have an account? <a href="/login">Log in here</a>
+        </div>
       </div>
-     <button class="btn btn-success mt-3 mb-3 " >SIGN UP</button>
-    </form> 
+    </div>
   </div>
- </div>
+</div>

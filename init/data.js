@@ -10,6 +10,13 @@ const sampleListings = [
     price: 1500,
     location: "Malibu",
     country: "United States",
+    category: "Trending",
+    geometry: {
+      type: "Point",
+      coordinates: [-118.7798, 34.0259],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Modern Loft in Downtown",
@@ -22,6 +29,13 @@ const sampleListings = [
     price: 1200,
     location: "New York City",
     country: "United States",
+    category: "Rooms",
+    geometry: {
+      type: "Point",
+      coordinates: [-74.006, 40.7128],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Mountain Retreat",
@@ -34,6 +48,13 @@ const sampleListings = [
     price: 1000,
     location: "Aspen",
     country: "United States",
+    category: "Mountains",
+    geometry: {
+      type: "Point",
+      coordinates: [-106.8175, 39.1911],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Historic Villa in Tuscany",
@@ -46,6 +67,13 @@ const sampleListings = [
     price: 2500,
     location: "Florence",
     country: "Italy",
+    category: "Castles",
+    geometry: {
+      type: "Point",
+      coordinates: [11.2558, 43.7696],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Secluded Treehouse Getaway",
@@ -58,6 +86,13 @@ const sampleListings = [
     price: 800,
     location: "Portland",
     country: "United States",
+    category: "Camping",
+    geometry: {
+      type: "Point",
+      coordinates: [-122.6784, 45.5152],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Beachfront Paradise",
@@ -70,6 +105,13 @@ const sampleListings = [
     price: 2000,
     location: "Cancun",
     country: "Mexico",
+    category: "Amazing Pools",
+    geometry: {
+      type: "Point",
+      coordinates: [-86.8515, 21.1619],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Rustic Cabin by the Lake",
@@ -82,6 +124,13 @@ const sampleListings = [
     price: 900,
     location: "Lake Tahoe",
     country: "United States",
+    category: "Camping",
+    geometry: {
+      type: "Point",
+      coordinates: [-120.0324, 39.0968],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Luxury Penthouse with City Views",
@@ -94,6 +143,13 @@ const sampleListings = [
     price: 3500,
     location: "Los Angeles",
     country: "United States",
+    category: "Iconic Cities",
+    geometry: {
+      type: "Point",
+      coordinates: [-118.2437, 34.0522],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Ski-In/Ski-Out Chalet",
@@ -106,6 +162,13 @@ const sampleListings = [
     price: 3000,
     location: "Verbier",
     country: "Switzerland",
+    category: "Mountains",
+    geometry: {
+      type: "Point",
+      coordinates: [7.2286, 46.0968],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Safari Lodge in the Serengeti",
@@ -118,6 +181,13 @@ const sampleListings = [
     price: 4000,
     location: "Serengeti National Park",
     country: "Tanzania",
+    category: "Farms",
+    geometry: {
+      type: "Point",
+      coordinates: [34.8333, -2.3333],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Historic Canal House",
@@ -130,6 +200,13 @@ const sampleListings = [
     price: 1800,
     location: "Amsterdam",
     country: "Netherlands",
+    category: "Iconic Cities",
+    geometry: {
+      type: "Point",
+      coordinates: [4.9041, 52.3676],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Private Island Retreat",
@@ -142,6 +219,13 @@ const sampleListings = [
     price: 10000,
     location: "Fiji",
     country: "Fiji",
+    category: "Amazing Pools",
+    geometry: {
+      type: "Point",
+      coordinates: [178.065, -17.7134],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Charming Cottage in the Cotswolds",
@@ -154,6 +238,13 @@ const sampleListings = [
     price: 1200,
     location: "Cotswolds",
     country: "United Kingdom",
+    category: "Farms",
+    geometry: {
+      type: "Point",
+      coordinates: [-1.8839, 51.833],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Historic Brownstone in Boston",
@@ -166,6 +257,13 @@ const sampleListings = [
     price: 2200,
     location: "Boston",
     country: "United States",
+    category: "Iconic Cities",
+    geometry: {
+      type: "Point",
+      coordinates: [-71.0589, 42.3601],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Beachfront Bungalow in Bali",
@@ -178,6 +276,13 @@ const sampleListings = [
     price: 1800,
     location: "Bali",
     country: "Indonesia",
+    category: "Amazing Pools",
+    geometry: {
+      type: "Point",
+      coordinates: [115.1889, -8.4095],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Mountain View Cabin in Banff",
@@ -190,6 +295,13 @@ const sampleListings = [
     price: 1500,
     location: "Banff",
     country: "Canada",
+    category: "Mountains",
+    geometry: {
+      type: "Point",
+      coordinates: [-115.5708, 51.1784],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Art Deco Apartment in Miami",
@@ -202,6 +314,13 @@ const sampleListings = [
     price: 1600,
     location: "Miami",
     country: "United States",
+    category: "Rooms",
+    geometry: {
+      type: "Point",
+      coordinates: [-80.1918, 25.7617],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Tropical Villa in Phuket",
@@ -214,6 +333,13 @@ const sampleListings = [
     price: 3000,
     location: "Phuket",
     country: "Thailand",
+    category: "Amazing Pools",
+    geometry: {
+      type: "Point",
+      coordinates: [98.3981, 7.8804],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Historic Castle in Scotland",
@@ -226,6 +352,13 @@ const sampleListings = [
     price: 4000,
     location: "Scottish Highlands",
     country: "United Kingdom",
+    category: "Castles",
+    geometry: {
+      type: "Point",
+      coordinates: [-4.2026, 57.3229],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Desert Oasis in Dubai",
@@ -238,6 +371,13 @@ const sampleListings = [
     price: 5000,
     location: "Dubai",
     country: "United Arab Emirates",
+    category: "Iconic Cities",
+    geometry: {
+      type: "Point",
+      coordinates: [55.2708, 25.2048],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Rustic Log Cabin in Montana",
@@ -250,6 +390,13 @@ const sampleListings = [
     price: 1100,
     location: "Montana",
     country: "United States",
+    category: "Mountains",
+    geometry: {
+      type: "Point",
+      coordinates: [-110.3626, 46.8797],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Beachfront Villa in Greece",
@@ -262,6 +409,13 @@ const sampleListings = [
     price: 2500,
     location: "Mykonos",
     country: "Greece",
+    category: "Amazing Pools",
+    geometry: {
+      type: "Point",
+      coordinates: [25.3667, 37.4467],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Eco-Friendly Treehouse Retreat",
@@ -274,6 +428,13 @@ const sampleListings = [
     price: 750,
     location: "Costa Rica",
     country: "Costa Rica",
+    category: "Camping",
+    geometry: {
+      type: "Point",
+      coordinates: [-84.0907, 9.7489],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Historic Cottage in Charleston",
@@ -286,6 +447,13 @@ const sampleListings = [
     price: 1600,
     location: "Charleston",
     country: "United States",
+    category: "Rooms",
+    geometry: {
+      type: "Point",
+      coordinates: [-79.9311, 32.7765],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Modern Apartment in Tokyo",
@@ -298,6 +466,13 @@ const sampleListings = [
     price: 2000,
     location: "Tokyo",
     country: "Japan",
+    category: "Iconic Cities",
+    geometry: {
+      type: "Point",
+      coordinates: [139.6917, 35.6895],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Lakefront Cabin in New Hampshire",
@@ -310,6 +485,13 @@ const sampleListings = [
     price: 1200,
     location: "New Hampshire",
     country: "United States",
+    category: "Camping",
+    geometry: {
+      type: "Point",
+      coordinates: [-71.5724, 43.1939],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Luxury Villa in the Maldives",
@@ -322,6 +504,13 @@ const sampleListings = [
     price: 6000,
     location: "Maldives",
     country: "Maldives",
+    category: "Amazing Pools",
+    geometry: {
+      type: "Point",
+      coordinates: [73.2207, 3.2028],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Ski Chalet in Aspen",
@@ -334,6 +523,13 @@ const sampleListings = [
     price: 4000,
     location: "Aspen",
     country: "United States",
+    category: "Mountains",
+    geometry: {
+      type: "Point",
+      coordinates: [-106.8175, 39.1911],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Secluded Beach House in Costa Rica",
@@ -346,18 +542,13 @@ const sampleListings = [
     price: 1800,
     location: "Costa Rica",
     country: "Costa Rica",
-  },
-  {
-    title: "Luxury Heritage Haveli",
-    description: "Experience the royal life in this beautifully restored heritage haveli in Rajasthan. Features intricate architecture and a grand courtyard.",
-    image: {
-      filename: "listingimage",
-      url: "https://images.unsplash.com/photo-1599661509657-2e1858348987?q=80&w=2938&auto=format&fit=crop",
+    category: "Trending",
+    geometry: {
+      type: "Point",
+      coordinates: [-84.0907, 9.7489],
     },
-    price: 5500,
-    location: "Jaipur",
-    country: "India",
-    category: "Iconic Cities"
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Himalayan View Cottage",
@@ -369,7 +560,13 @@ const sampleListings = [
     price: 2500,
     location: "Manali",
     country: "India",
-    category: "Mountains"
+    category: "Mountains",
+    geometry: {
+      type: "Point",
+      coordinates: [77.1887, 32.2432],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Goan Portuguese Villa",
@@ -381,7 +578,13 @@ const sampleListings = [
     price: 8000,
     location: "Goa",
     country: "India",
-    category: "Amazing Pools"
+    category: "Amazing Pools",
+    geometry: {
+      type: "Point",
+      coordinates: [73.8278, 15.2993],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   },
   {
     title: "Cabin in the Smoky Mountains",
@@ -393,7 +596,13 @@ const sampleListings = [
     price: 1500,
     location: "Gatlinburg",
     country: "United States",
-    category: "Mountains"
+    category: "Mountains",
+    geometry: {
+      type: "Point",
+      coordinates: [-83.5102, 35.7143],
+    },
+    reviews: [],
+    owner: "687b3a9c054e94cd3419291d",
   }
 ];
 

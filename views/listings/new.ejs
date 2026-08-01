@@ -1,80 +1,186 @@
- <% layout("layouts/biolerplate") %>
+<% layout("layouts/biolerplate") %>
 
-<div class="row mt-2 ">
-  <div class="col-8 offset-2">
-        <h2>ADD NEW LISTING</h2>
-          <br><br>
-    <form method="POST" action="/listings"  
-    novalidate class="needs-validation" enctype="multipart/form-data">
-    <div class="mb-3"> 
-     <label for="title" class="form-label">TITLE:</label>
-     <input type="text" name="listing[title]" class="form-control" required>
-     <div class="valid-feedback">
-      Looks good!
-    </div>
-    </div>
- 
-    <div class="mb-3">
-  <label for="description" class="form-label">DESCRIPTION:</label>
-  <input type="text" name="listing[description]" class="form-control" required>
-  <div class="invalid-feedback">
-    enter short description
-    </div>
-    </div>
+<style>
+  .form-page-container {
+    padding-top: 2.5rem;
+    padding-bottom: 4rem;
+  }
 
-     <div class="mb-3"> 
-     <label for="image" class="form-label" >Image:</label>
-     <input type="file" name="listing[image]" class="form-control" >
-    </div>
+  .form-card {
+    background: #FFFFFF;
+    border: 1px solid #E6EADF;
+    border-radius: 24px;
+    padding: 2.75rem 2.5rem;
+    box-shadow: 0 8px 30px rgba(95, 141, 122, 0.08);
+  }
 
-<div class="row">
- <div class="mb-3 col-md-4">
-  <label for="price" class="form-label" >PRICE:</label>
-  <input  name="listing[price]" class="form-control" required>
-  <div class="invalid-feedback">
-   price should be valid
-    </div>
-</div>
+  .form-header-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2F2F2F;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.01em;
+  }
 
- <div class="mb-3">
-  <label for="category">Choose category:</label>
-  <br>
- <select name="listing[category]">
-  <option value="Trending">Trending</option>
-  <option value="Rooms">Rooms</option>
-  <option value="Iconic Cities">Iconic Cities</option>
-  <option value="Mountains">Mountains</option>
-  <option value="Castels">Castels</option>
-  <option value="Amazing Pools">Amazing Pools</option>
-  <option value="Camping">Camping</option>
-  <option value="Farms">Farms</option>
-  <option value="Arcatic">Arcatic</option>
-</select>
-    <div class="invalid-feedback">
-    choose valid category
-    </div>
-    </div>
+  .form-header-subtitle {
+    color: #6B7280;
+    font-size: 0.98rem;
+    margin-bottom: 2rem;
+  }
 
+  .form-section-label {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #5F8D7A;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #E6EADF;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
 
-<div class="mb-3 col-md-8">
-      <label for="country" class="form-label">COUNTRY:</label>
-  <input type="text" name="listing[country]" class="form-control"required>
-    <div class="invalid-feedback">
-   country name should be valid
+  .form-label {
+    font-weight: 600;
+    color: #2F2F2F;
+    font-size: 0.92rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .form-control, .form-select {
+    border-radius: 12px !important;
+    border: 1px solid #E6EADF !important;
+    padding: 0.65rem 1rem !important;
+    font-size: 0.95rem !important;
+    color: #2F2F2F !important;
+    background-color: #FCFCF8 !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .form-control:focus, .form-select:focus {
+    border-color: #5F8D7A !important;
+    box-shadow: 0 0 0 4px rgba(95, 141, 122, 0.15) !important;
+    background-color: #FFFFFF !important;
+  }
+
+  .btn-sage-submit {
+    width: 100%;
+    background-color: #5F8D7A !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    padding: 0.8rem 1.5rem !important;
+    border-radius: 30px !important;
+    font-weight: 600 !important;
+    font-size: 1.05rem !important;
+    box-shadow: 0 4px 14px rgba(95, 141, 122, 0.25) !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .btn-sage-submit:hover {
+    background-color: #4E7867 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(78, 120, 103, 0.35) !important;
+    color: #FFFFFF !important;
+  }
+
+  @media (max-width: 767.98px) {
+    .form-card {
+      padding: 1.75rem 1.25rem;
+    }
+  }
+</style>
+
+<div class="container form-page-container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+      <div class="form-card">
+        <div class="text-center mb-4">
+          <h2 class="form-header-title">Become a Host on StayEase</h2>
+          <p class="form-header-subtitle">Share your home with travelers around the world.</p>
+        </div>
+
+        <form method="POST" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
+          
+          <!-- Property Overview -->
+          <div class="form-section-label">
+            <i class="fa-solid fa-house"></i> Property Overview
+          </div>
+
+          <div class="mb-3">
+            <label for="title" class="form-label">Property Title</label>
+            <input type="text" name="listing[title]" class="form-control" placeholder="e.g. Cozy Beachfront Villa with Pool" required>
+            <div class="invalid-feedback">Please enter a property title.</div>
+          </div>
+
+          <div class="mb-4">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="listing[description]" class="form-control" rows="4" placeholder="Describe what makes your space special, amenities, views, and atmosphere..." required></textarea>
+            <div class="invalid-feedback">Please enter a short description.</div>
+          </div>
+
+          <!-- Media & Pricing -->
+          <div class="form-section-label">
+            <i class="fa-solid fa-camera"></i> Media & Category
+          </div>
+
+          <div class="mb-3">
+            <label for="image" class="form-label">Upload Image</label>
+            <input type="file" name="listing[image]" class="form-control" accept="image/*">
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="price" class="form-label">Price per Night (&#8377;)</label>
+              <input type="number" name="listing[price]" class="form-control" placeholder="e.g. 2500" required>
+              <div class="invalid-feedback">Please enter a valid price.</div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="category" class="form-label">Choose Category</label>
+              <select name="listing[category]" class="form-select" required>
+                <option value="Trending">Trending</option>
+                <option value="Rooms">Rooms</option>
+                <option value="Iconic Cities">Iconic Cities</option>
+                <option value="Mountains">Mountains</option>
+                <option value="Castels">Castles</option>
+                <option value="Amazing Pools">Amazing Pools</option>
+                <option value="Camping">Camping</option>
+                <option value="Farms">Farms</option>
+                <option value="Arcatic">Arctic</option>
+              </select>
+              <div class="invalid-feedback">Please select a valid category.</div>
+            </div>
+          </div>
+
+          <!-- Location Details -->
+          <div class="form-section-label mt-2">
+            <i class="fa-solid fa-location-dot"></i> Location Details
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="location" class="form-label">City / Location</label>
+              <input type="text" name="listing[location]" class="form-control" placeholder="e.g. Malibu, California" required>
+              <div class="invalid-feedback">Please enter a valid location.</div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+              <label for="country" class="form-label">Country</label>
+              <input type="text" name="listing[country]" class="form-control" placeholder="e.g. United States" required>
+              <div class="invalid-feedback">Please enter a valid country name.</div>
+            </div>
+          </div>
+
+          <button class="btn btn-sage-submit">
+            <i class="fa-solid fa-plus-circle"></i> Create Listing
+          </button>
+        </form>
+      </div>
     </div>
-</div>
-</div>
-
-<div class="mb-3">
-  <label for="loacation" class="form-label">LOCATION:</label>
-  <input type="text" name="listing[location]" class="form-control" required>
-    <div class="invalid-feedback">
-   location should be valid
-    </div>
-</div>
-
- <button class="btn btn-dark add-btn mt-3 mb-3 " >ADD</button>
-    </form>
-    
   </div>
 </div>
