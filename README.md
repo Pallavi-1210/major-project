@@ -24,7 +24,7 @@ Deployment: Render
 
 Links
 Live Demo: https://major-project-2-1mus.onrender.com/
-GitHub Repository: https://github.com/your-username/your-repo-name
+GitHub Repository: https://github.com/Pallavi-1210/major-project
 
 Usage
 
