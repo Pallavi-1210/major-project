@@ -23,7 +23,7 @@ Maps & API: Leaflet, OpenCage API
 Deployment: Render
 
 Links
-Live Demo: https://your-app.onrender.com
+Live Demo: https://major-project-2-1mus.onrender.com/
 GitHub Repository: https://github.com/your-username/your-repo-name
 
 Usage
